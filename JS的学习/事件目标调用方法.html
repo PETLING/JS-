@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<p id="p">Hellow Word!</p>
+
+		<script>
+			// 事件目标调用getElementById()方法，
+			// false(事件冒泡)布尔值，把接收到的事件逐渐向上传到它的祖先元素一直传到顶层的document对象
+			// true(事件捕捉)布尔值从顶层的document对象开始，逐渐往下传播事件
+			function mouseOverFn() {
+				p.style.color = "blue";
+				p.style.fontSize = "30px";
+				p.style.fontstyle = "italic";
+				p.style.textDecoration = "underline";
+			}
+
+			function mouseOutFn() {
+				p.style.color = "red";
+				p.style.fontstyle = "normal";
+				p.style.textDecoration = "none";
+			}
+			window.onload = function() {
+				var p = document.getElementById("p");
+				p.addEventListener("click", function() {
+					alert("单击事件");
+				}, false);
+				p.addEventListener("mouseover", mouseOverFn, false);
+				p.addEventListener("mouseout", mouseOutFn, false);
+				p.addEventListener("click", function() {
+					alert("使用addEventListener()注册事件处理程序");
+				}, false);
+			}
+		</script>
+	</body>
+</html>
